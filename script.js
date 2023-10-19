@@ -41,7 +41,15 @@ function drawCard(deckName) {
         return;
     }
     else{
-        document.getElementById('immediateResult').innerText = result >= 0 ? `You earned $${result}` : `You lost $${Math.abs(result)}`;
+        //document.getElementById('immediateResult').innerText = result >= 0 ? `You earned $${result}` : `You lost $${Math.abs(result)}`;
+        let resultSpan = document.getElementById('resultValue');
+        if (result >= 0) {
+            resultSpan.innerText = `earned $${result}`;
+            resultSpan.className = 'gain';  // Apply green color
+        } else {
+            resultSpan.innerText = `lost $${Math.abs(result)}`;
+            resultSpan.className = 'loss';  // Apply red color
+        }
     }
 
     profit += result;
