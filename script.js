@@ -59,8 +59,8 @@ function computeNetScores() {
     for (let i = 0; i < maxTrials; i += 20) {
         let block = results.slice(i, i + 20);
         let netScore = block.reduce((score, record) => {
-            if (['B'].includes(record.deck)) score++; // Advantageous
-            if (['A'].includes(record.deck)) score--; // Disadvantageous
+            if (['C','D'].includes(record.deck)) score++; // Advantageous
+            if (['A','B'].includes(record.deck)) score--; // Disadvantageous
             return score;
         }, 0);
         netScores.push(netScore);
