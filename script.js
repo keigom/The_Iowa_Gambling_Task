@@ -82,6 +82,7 @@ function displayNetScores(netScores) {
 }
 
 function downloadCSV() {
+    var userId = $.cookie("name");
     let csvContent = "data:text/csv;charset=utf-8,";
     let netScores = computeNetScores();
 
@@ -105,7 +106,7 @@ function downloadCSV() {
     let encodedUri = encodeURI(csvContent);
     let link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "igt_results.csv");
+    link.setAttribute("download", "igt_results" + userId + ".csv");
     document.body.appendChild(link);
     link.click();
 }
