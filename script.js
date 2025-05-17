@@ -23,16 +23,16 @@ function drawCard(deckName) {
     let result;
     switch(deckName) {
         case 'A':
-            result = deckA.pop();
+            result = deckA.shift();
             break;
         case 'B':
-            result = deckB.pop();
+            result = deckB.shift();
             break;
         case 'C':
-            result = deckC.pop();
+            result = deckC.shift();
             break;
         case 'D':
-            result = deckD.pop();
+            result = deckD.shift();
             break;
     }
     
@@ -86,6 +86,9 @@ function downloadCSV() {
     let csvContent = "data:text/csv;charset=utf-8,";
     let netScores = computeNetScores();
 
+    // also send the results to the server
+    saveResults(userId, netScores);
+
     // Header for individual results
     csvContent += "Deck,Result,Total Profit\n";
     results.forEach(record => {
@@ -121,5 +124,17 @@ function generateStringRandomly() {
         r += c[Math.floor(Math.random() * cl)];
     }
     return r;
+}
+
+function saveResults(userId, netScores) {
+    fetch('/results', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ userId, results, netScores })
+    }).then(res => {
+        if (!res.ok) throw new Error('Failed to save results');
+    }).catch(err => {
+        console.error('Error saving results', err);
+    });
 }
 

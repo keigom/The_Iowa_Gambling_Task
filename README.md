@@ -16,3 +16,12 @@ Participants started with a "loan" of of $2000 and were told to make a profit.
 ## CSV values
 Deck, Result, Total Profit
 Block, Net Score
+
+## Running Locally
+Install dependencies and start the server:
+
+```bash
+npm install
+npm start
+```
+Then open `http://localhost:3000` in your browser.
