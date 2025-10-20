@@ -1,29 +1,105 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(180deg, #f7f8fb 0%, #eef1f6 100%);
+    color: #1f2933;
+}
+
+.container {
+    width: min(100%, 960px);
+    margin: 0 auto;
+    padding: 3rem clamp(1.5rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.page-header {
     text-align: center;
-    padding: 50px;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: #52606d;
+    margin: 0;
+}
+
+#decks {
+    display: grid;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
 }
 
 button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 20px;
+    padding: clamp(0.75rem, 2.5vw, 1rem);
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    border: none;
+    border-radius: 12px;
+    background-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
 }
 
-#message {
-    font-size: 24px;
-    margin-top: 30px;
+button:hover,
+button:focus {
+    outline: none;
+    transform: translateY(-2px);
+    background-color: #1d4ed8;
+    box-shadow: 0 12px 30px rgba(29, 78, 216, 0.35);
 }
 
+.results {
+    text-align: center;
+    display: grid;
+    gap: 0.75rem;
+}
+
+#message,
 #immediateResult {
-    font-size: 24px;
-    margin-top: 30px;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: clamp(0.75rem, 3vw, 1.5rem);
+}
+
+.actions button {
+    flex: 1 1 220px;
 }
 
 .gain {
-    color: green;
+    color: #0f9d58;
 }
 
 .loss {
-    color: red;
+    color: #d93025;
+}
+
+@media (max-width: 600px) {
+    body {
+        align-items: flex-start;
+    }
+
+    .container {
+        padding-block: clamp(2rem, 8vw, 3rem);
+    }
 }
