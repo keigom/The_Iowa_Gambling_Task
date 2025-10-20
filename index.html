@@ -7,21 +7,29 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Iowa Gambling Task</h1>
-    <p>Choose a deck to draw a card and see if you can maximize your profit!</p>
-    
-    <div id="decks">
-        <button onclick="drawCard('A')">Deck A</button>
-        <button onclick="drawCard('B')">Deck B</button>
-        <button onclick="drawCard('C')">Deck C</button>
-        <button onclick="drawCard('D')">Deck D</button>
-    </div>
+    <main class="container">
+        <header class="page-header">
+            <h1>Iowa Gambling Task</h1>
+            <p class="subtitle">Choose a deck to draw a card and see if you can maximize your profit!</p>
+        </header>
 
-    <p id="immediateResult">You <span id="resultValue"></span></p> <!-- Element to display the immediate result -->
-    
-    <p id="message">Total Profit: $<span id="profit">2000</span></p>
-    <button onclick="downloadCSV()">Download Results (CSV)</button>
-    <button onclick="saveResults(generateStringRandomly(), computeNetScores())">Save Results to Server</button>
+        <section id="decks" aria-label="Card decks">
+            <button onclick="drawCard('A')">Deck A</button>
+            <button onclick="drawCard('B')">Deck B</button>
+            <button onclick="drawCard('C')">Deck C</button>
+            <button onclick="drawCard('D')">Deck D</button>
+        </section>
+
+        <section class="results" aria-live="polite">
+            <p id="immediateResult">You <span id="resultValue"></span></p>
+            <p id="message">Total Profit: $<span id="profit">2000</span></p>
+        </section>
+
+        <div class="actions">
+            <button onclick="downloadCSV()">Download Results (CSV)</button>
+            <button onclick="saveResults(generateStringRandomly(), computeNetScores())">Save Results to Server</button>
+        </div>
+    </main>
 
     <script src="script.js"></script>
 
